@@ -7,7 +7,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './layout/home/home.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
-import { ListEventComponent } from './layout/list-event/list-event.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 
@@ -17,14 +16,11 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    NotFoundComponent,
-    ListEventComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,//module externe depuis node_modules
     AppRoutingModule, //module interne qui sous trouve sous src/app
-   FormsModule,
-   SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
