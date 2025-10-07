@@ -1,0 +1,44 @@
+
+
+<!---<input [value]="prop1" [placeholder]="rechercher" />
+{{prop1}}--->
+<!---<button (click)="Like()">Like</button>--->
+<!---<input [(ngModel)]="propNgModel" >
+{{propNgModel}}--->
+
+<div class="container py-4">
+    <h2 class="mb-3">{{ title }}</h2>  <!---interpolation---->
+
+    <!-- Recherche -->
+    <input type="text" class="form-control mb-4" [(ngModel)]="propNgModel"
+           [placeholder]="rechercher"> <!---propertybinding--->
+
+    <div class="row g-3">
+     <!---debut de la boucle for--->
+
+     <div class="col-md-4" *ngFor="let e of list" >
+
+            <div *ngIf="e.title.toLowerCase().trim().includes(propNgModel.toLowerCase().trim())" class="card h-100 shadow-sm" >
+                <img [src]="e.imageUrl"
+                     class="card-img-top img-fluid"
+                     style="height: 200px; object-fit: cover;">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{e.title | uppercase}}</h5>
+                    <p class="text-muted">{{e.place}},{{e.date | date:'mediumDate'}}</p>
+                    <p>{{e.description}}</p>
+                    <p class="fw-bold">{{e.price  | number:'1.2-2' | currency:'TND'  }}</p>
+                    <p>Nombre de places est : {{e.nbPlaces}}</p>
+
+                    <!-- Bouton Like -->
+                    <button  (click)="Like(e)" class="btn btn-sm btn-primary" >
+                        👍 Like
+                    </button>   <!--event binding-->
+                    <span class="ms-2">{{e.nbLikes}}</span>
+                </div>
+            </div>
+
+        </div>  <!---enfor-->
+
+    </div>
+</div>

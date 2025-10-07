@@ -1,0 +1,37 @@
+<nav [ngClass]="isAdmin ? cAdmin :cNotAdmin">
+ <!-- <nav [class]="isAdmin ? cAdmin : cNotAdmin ">--->
+  <!---cssAdmin/cssNotAdmin : les classes sont définies dans les fichiers css pas dans la classe du composant--->
+<!---<nav [ngClass]="{'cssAdmin' : isAdmin , 'cssNotAdmin' :  !isAdmin }">--->
+  <div class="container">
+      <!-- Logo / Nom de l'application -->
+      <a class="navbar-brand fw-bold" href="/">EventHub</a>
+
+      <!-- Bouton burger (mobile) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu principal -->
+      <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="/home" hrefActive="active" aria-current="page">Accueil</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/events" hrefActive="active">Événements</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/tickets" hrefActive="active">Mes Tickets</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/feedback" hrefActive="active">Feedback</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/auth/login" hrefActive="active">Se connecter</a>
+              </li>
+
+          </ul>
+      </div>
+  </div>
+</nav>
