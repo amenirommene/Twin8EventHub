@@ -1,7 +1,7 @@
-<nav [ngClass]="isAdmin ? cAdmin :cNotAdmin">
+<nav [ngClass]="isAdmin ? cAdmin :cNotAdmin"> <!--cAdmin est une propriété du composant-->
  <!-- <nav [class]="isAdmin ? cAdmin : cNotAdmin ">--->
-  <!---cssAdmin/cssNotAdmin : les classes sont définies dans les fichiers css pas dans la classe du composant--->
-<!---<nav [ngClass]="{'cssAdmin' : isAdmin , 'cssNotAdmin' :  !isAdmin }">--->
+  <!---cAdmin/cNotAdmin : des classes css définies dans les fichiers css pas dans la classe du composant--->
+<!---<nav [ngClass]="{'cAdmin' : isAdmin , 'cNotAdmin' :  !isAdmin }">--->
   <div class="container">
       <!-- Logo / Nom de l'application -->
       <a class="navbar-brand fw-bold" href="/">EventHub</a>
