@@ -35,6 +35,7 @@
                         👍 Like
                     </button>   <!--event binding-->
                     <span class="ms-2">{{e.nbLikes}}</span>
+                    <a [routerLink]="['./',e.id]">Details</a>
                 </div>
             </div>
 
@@ -42,3 +43,4 @@
 
     </div>
 </div>
+<router-outlet></router-outlet>

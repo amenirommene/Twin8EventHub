@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Event } from '../../../../models/event';
+import { Eventy } from '../../../../models/event';
 
 @Component({
   selector: 'app-list-event',
@@ -12,12 +12,12 @@ export class ListEventComponent {
   rechercher : string = "rechecher évènement";
   prop1: string = "bonjour";
   propNgModel : string = "";
-  Like(ev:Event){
+  Like(ev:Eventy){
     console.log("je suis la méthode like");
     ev.nbLikes ++;
 
   }
-   list : Event[] = [
+   list : Eventy[] = [
   {id:1, title:"Angular Summit", description:"Conférence sur Angular et l’écosystème front-end", date:new Date("2025-11-10"), place:"Tunis", price:50, organizerId:1,imageUrl:"images/event1.PNG", nbPlaces:25, nbLikes:0 },
   {id:2, title:"Web dev days", description:"Journée dédiée aux frameworks web modernes.", date:new Date("2025-01-05"), place:"Ariana",price:30, organizerId:1,imageUrl:"images/event2.PNG", nbPlaces:0, nbLikes:0}
 
