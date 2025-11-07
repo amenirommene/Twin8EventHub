@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EventsRoutingModule } from './events-routing.module';
 import { EventsComponent } from './events.component';
 import { ListEventComponent } from './pages/list-event/list-event.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
@@ -25,6 +25,7 @@ import { AddEventComponent } from './components/add-event/add-event.component';
     CommonModule,
     EventsRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ]
 })
