@@ -1,0 +1,77 @@
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="container mt-4">
+  <div class="form-group">
+    <label for="title">Titre</label>
+    <input id="title" formControlName="title" class="form-control" placeholder="Titre de l'événement" />
+    <div *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched" class="text-danger">
+      <div *ngIf="eventForm.get('title')?.hasError('required')">Le titre est requis.</div>
+      <div *ngIf="eventForm.get('title')?.hasError('minlength')">Le titre doit avoir au moins {{ eventForm.get('title')?.errors?.['minlength']?.['requiredLength'] }}
+ caractères.</div>
+      <div *ngIf="eventForm.get('title')?.hasError('pattern')">Le titre ne peut contenir que des lettres.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" class="form-control" placeholder="Description de l'événement"></textarea>
+    <div *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched" class="text-danger">
+      <div *ngIf="eventForm.get('description')?.hasError('required')">La description est requise.</div>
+      <div *ngIf="eventForm.get('description')?.hasError('minlength')">La description doit contenir au moins 30 caractères.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date de l'événement</label>
+    <input id="date" type="date" formControlName="date" class="form-control" />
+    <div *ngIf="eventForm.get('date')?.invalid && eventForm.get('date')?.touched" class="text-danger">
+      <div *ngIf="eventForm.get('date')?.hasError('required')">La date est requise.</div>
+      <div *ngIf="eventForm.get('date')?.hasError('futureDateInvalid')">
+        {{ eventForm.get('date')?.getError('futureDateInvalid') }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Prix</label>
+    <input id="price" type="number" formControlName="price" class="form-control" placeholder="Prix de l'événement" />
+    <div *ngIf="eventForm.get('price')?.invalid && eventForm.get('price')?.touched" class="text-danger">
+      <div *ngIf="eventForm.get('price')?.hasError('required')">Le prix est requis.</div>
+      <div *ngIf="eventForm.get('price')?.hasError('pattern')">Le prix doit être un nombre valide.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="nbPlaces">Nombre de places</label>
+    <input id="nbPlaces" type="number" formControlName="nbPlaces" class="form-control" placeholder="Nombre de places" />
+    <div *ngIf="eventForm.get('nbPlaces')?.invalid && eventForm.get('nbPlaces')?.touched" class="text-danger">
+      <div *ngIf="eventForm.get('nbPlaces')?.hasError('required')">Le nombre de places est requis.</div>
+      <div *ngIf="eventForm.get('nbPlaces')?.hasError('pattern')">Le nombre de places doit être entre 0 et 100.</div>
+    </div>
+  </div>
+
+<!---  <div class="form-group">
+    <label for="place">Lieu</label>
+    <input id="place" formControlName="place" class="form-control" placeholder="Lieu de l'événement" />
+    <div *ngIf="eventForm.get('place')?.invalid && eventForm.get('place').touched" class="text-danger">
+      Lieu est requis.
+    </div>
+  </div>---->
+    <div class="form-group">
+    <label for="imageUrl">URL de l'image</label>
+    <input id="imageUrl" formControlName="imageUrl" class="form-control" placeholder="URL de l'image (optionnel)" />
+  </div>
+
+  <div formArrayName="domaines" class="form-group">
+    <div *ngFor="let d of domaines.controls; let i=index">
+      <label for="domaine-{{ i }}">Domaine:</label>
+      <input id="domaine-{{ i }}" type="text" [formControlName]="i" class="form-control" placeholder="Domaine de l'évènement">
+      <div *ngIf="d?.invalid && (d.dirty || d.touched)" class="text-danger">
+        <div *ngIf="d.hasError('required')">Le domaine est requis.</div>
+        <div *ngIf="d.hasError('minlength')">Le domaine doit comporter au moins 3 caractères.</div>
+        <div *ngIf="d.hasError('maxlength')">Le domaine ne peut pas dépasser 50 caractères.</div>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3" type="button" (click)="addDomain()">+ nouveau domaine</button>
+  </div>
+  <button type="submit" [disabled]="eventForm?.invalid" class="btn btn-primary mt-3">Ajouter</button>
+</form>
+
