@@ -2,4 +2,32 @@
 .highlight {
   background-color: yellow;
   padding: 10px;
-  border: 1px solid black; }
+  border: 1px solid black;
+}
+
+
+/* Champ touché (utilisateur a quitté le champ) */
+input.ng-touched, textarea.ng-touched{
+    border: 2px solid blue; /* Bordure bleue pour un champ touché */
+    background-color: #e3f2fd; /* Fond bleu clair pour indiquer que le champ a été touché */
+}
+
+/* Champ non touché */
+input.ng-untouched, textarea.ng-untouched {
+    border: 2px solid lightgray; /* Bordure grise pour un champ non touché */
+    background-color: #f5f5f5; /* Fond gris clair par défaut */
+}
+
+/* Champ valide */
+input.ng-valid.ng-touched, textarea.ng-valid.ng-touched {
+    border: 2px solid green; /* Bordure verte pour un champ valide */
+    background-color: #e8f5e9; /* Fond vert clair pour indiquer la validité */
+}
+
+/* Champ invalide */
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched  {
+    border: 2px solid red; /* Bordure rouge pour un champ invalide */
+    background-color: #f8d7da; /* Fond rouge clair pour indiquer l'invalidité */
+}
+
+

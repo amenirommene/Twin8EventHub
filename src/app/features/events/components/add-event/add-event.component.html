@@ -4,7 +4,8 @@
     <input id="title" formControlName="title" class="form-control" placeholder="Titre de l'événement" />
     <div *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched" class="text-danger">
       <div *ngIf="eventForm.get('title')?.hasError('required')">Le titre est requis.</div>
-      <div *ngIf="eventForm.get('title')?.hasError('minlength')">Le titre doit avoir au moins {{ eventForm.get('title')?.errors?.['minlength']?.['requiredLength'] }}
+      <div *ngIf="eventForm.get('title')?.hasError('minlength')">Le titre doit avoir au moins
+        {{ eventForm.get('title')?.errors?.['minlength']?.['requiredLength'] }} caractères alors que vous avez écrit  {{ eventForm.get('title')?.errors?.['minlength']?.['actualLength'] }}
  caractères.</div>
       <div *ngIf="eventForm.get('title')?.hasError('pattern')">Le titre ne peut contenir que des lettres.</div>
     </div>
@@ -32,7 +33,7 @@
 
   <div class="form-group">
     <label for="price">Prix</label>
-    <input id="price" type="number" formControlName="price" class="form-control" placeholder="Prix de l'événement" />
+    <input id="price" type="text" formControlName="price" class="form-control" placeholder="Prix de l'événement" />
     <div *ngIf="eventForm.get('price')?.invalid && eventForm.get('price')?.touched" class="text-danger">
       <div *ngIf="eventForm.get('price')?.hasError('required')">Le prix est requis.</div>
       <div *ngIf="eventForm.get('price')?.hasError('pattern')">Le prix doit être un nombre valide.</div>
@@ -72,6 +73,6 @@
     </div>
     <button class="btn btn-primary mt-3" type="button" (click)="addDomain()">+ nouveau domaine</button>
   </div>
-  <button type="submit" [disabled]="eventForm?.invalid" class="btn btn-primary mt-3">Ajouter</button>
+  <button type="submit" [disabled]="eventForm.invalid" class="btn btn-primary mt-3">Ajouter</button>
 </form>
 

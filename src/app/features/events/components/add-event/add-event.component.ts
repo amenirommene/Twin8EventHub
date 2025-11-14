@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { futurDateValidator } from '../../../../shared/validators/futur-date.validator';
 
 @Component({
   selector: 'app-add-event',
@@ -7,18 +8,20 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './add-event.component.css'
 })
 export class AddEventComponent {
-
   eventForm!:FormGroup;
   ngOnInit(){
     this.eventForm = new FormGroup(
     {
-      title: new FormControl("",[Validators.required, Validators.minLength(3)]),
-      price: new FormControl(),
-      description: new FormControl(),
-      date:new FormControl(),
-      nbPlaces:new FormControl(),
-      imageUrl:new FormControl(),
-      domaines : new FormArray([new FormControl()])
+      title: new FormControl("",[Validators.required, Validators.minLength(5), Validators.pattern("[a-zA-Z]*")]),
+      price: new FormControl("",[Validators.pattern("^\\d+(\\.\\d+)?$")]),
+      description: new FormControl("",[Validators.required, Validators.minLength(30)]),
+      date:new FormControl("", [Validators.required,futurDateValidator(7)]),
+      nbPlaces:new FormControl("", [Validators.required, Validators.pattern("")]),
+      imageUrl:new FormControl("", [Validators.required]),
+      domaines : new FormArray([new FormControl("",Validators.required)]),
+      address: new FormGroup({
+
+      })
 
     }
   )
