@@ -1,0 +1,36 @@
+<!---<nav [class]="getClass()">--->
+ <!--- <nav [class]="isAdmin ? cssAdmin : cssNotAdmin">--->
+     <nav>
+  <div class="container">
+    <!-- Logo / Nom de l'application -->
+    <a class="navbar-brand fw-bold" routerLink="/">EventHub</a>
+
+    <!-- Bouton burger (mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu principal -->
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active" aria-current="page">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/events" routerLinkActive="active">Événements</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tickets" routerLinkActive="active">Mes Tickets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/feedback" routerLinkActive="active">Feedback</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/auth/login" routerLinkActive="active">Se connecter</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

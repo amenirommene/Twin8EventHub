@@ -2,12 +2,12 @@
   <div class="form-group">
     <label for="title">Titre</label>
     <input id="title" formControlName="title" class="form-control" placeholder="Titre de l'événement" />
-    <div *ngIf="eventForm.get('title')?.invalid && eventForm.get('title')?.touched" class="text-danger">
-      <div *ngIf="eventForm.get('title')?.hasError('required')">Le titre est requis.</div>
-      <div *ngIf="eventForm.get('title')?.hasError('minlength')">Le titre doit avoir au moins
-        {{ eventForm.get('title')?.errors?.['minlength']?.['requiredLength'] }} caractères alors que vous avez écrit  {{ eventForm.get('title')?.errors?.['minlength']?.['actualLength'] }}
+    <div *ngIf="title?.invalid && title?.touched" class="text-danger">
+      <div *ngIf="title?.hasError('required')">Le titre est requis.</div>
+      <div *ngIf="title?.hasError('minlength')">Le titre doit avoir au moins
+        {{ title?.errors?.['minlength']?.['requiredLength'] }} caractères alors que vous avez écrit  {{ eventForm.get('title')?.errors?.['minlength']?.['actualLength'] }}
  caractères.</div>
-      <div *ngIf="eventForm.get('title')?.hasError('pattern')">Le titre ne peut contenir que des lettres.</div>
+      <div *ngIf="title?.hasError('pattern')">Le titre ne peut contenir que des lettres.</div>
     </div>
   </div>
 
@@ -60,8 +60,30 @@
     <label for="imageUrl">URL de l'image</label>
     <input id="imageUrl" formControlName="imageUrl" class="form-control" placeholder="URL de l'image (optionnel)" />
   </div>
+  <div formGroupName="address" class="mb-4 p-3 bg-light border rounded">
+  <h2 class="h4 mb-3">Address</h2>
 
-  <div formArrayName="domaines" class="form-group">
+  <div class="mb-3">
+    <label for="street" class="form-label">Avenue:</label>
+    <input id="street" type="text" formControlName="street" class="form-control" placeholder="Avenue">
+  </div>
+
+  <div class="mb-3">
+    <label for="city" class="form-label">Ville:</label>
+    <input id="city" type="text" formControlName="city" class="form-control" placeholder="Ville">
+  </div>
+
+  <div class="mb-3">
+    <label for="state" class="form-label">Gouvernorat:</label>
+    <input id="state" type="text" formControlName="state" class="form-control" placeholder="Gouvernorat">
+  </div>
+
+  <div class="mb-3">
+    <label for="zip" class="form-label">Code postal:</label>
+    <input id="zip" type="text" formControlName="zip" class="form-control" placeholder="Code postal">
+  </div>
+</div>
+<div formArrayName="domaines" class="form-group" *ngIf="eventForm.get('address')?.valid">
     <div *ngFor="let d of domaines.controls; let i=index">
       <label for="domaine-{{ i }}">Domaine:</label>
       <input id="domaine-{{ i }}" type="text" [formControlName]="i" class="form-control" placeholder="Domaine de l'évènement">

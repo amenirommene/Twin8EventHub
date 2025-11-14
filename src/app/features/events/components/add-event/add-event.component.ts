@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { futurDateValidator } from '../../../../shared/validators/futur-date.validator';
 
 @Component({
@@ -9,6 +9,7 @@ import { futurDateValidator } from '../../../../shared/validators/futur-date.val
 })
 export class AddEventComponent {
   eventForm!:FormGroup;
+
   ngOnInit(){
     this.eventForm = new FormGroup(
     {
@@ -20,13 +21,23 @@ export class AddEventComponent {
       imageUrl:new FormControl("", [Validators.required]),
       domaines : new FormArray([new FormControl("",Validators.required)]),
       address: new FormGroup({
-
-      })
+          street: new FormControl('', Validators.required),
+          city: new FormControl('', Validators.required),
+          state: new FormControl('', Validators.required),
+          zip: new FormControl('', [Validators.required])
+    })
 
     }
   )
   }
-  onSubmit(){}
+  onSubmit(){
+    console.log(this.eventForm.value);
+  }
+
+  get title(){
+    return this.eventForm.get('title');
+  }
+  
   get domaines(){
     return this.eventForm.get('domaines') as FormArray;
   }
