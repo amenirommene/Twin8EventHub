@@ -10,13 +10,15 @@
                     <p>{{e.description}}</p>
                     <p class="fw-bold">{{e.price  | number:'1.2-2' | currency:'TND'  }}</p>
                     <p>Nombre de places est : {{e.nbPlaces}}</p>
-
+                    <a [routerLink]="['./',e.id]">Details</a>
                     <!-- Bouton Like -->
                     <button  (click)="Like(e)" class="btn btn-sm btn-primary" >
                         👍 Like
                     </button>   <!--event binding-->
                     <span class="ms-2">{{e.nbLikes}}</span>
-                    <a [routerLink]="['./',e.id]">Details</a>
+                    <a [routerLink]="['participate',e.id,e.price]"><button class="btn btn-primary" >Participer</button></a>
+
+
                 </div>
             </div>
 

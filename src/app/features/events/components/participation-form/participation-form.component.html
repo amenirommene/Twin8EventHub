@@ -1,0 +1,20 @@
+<form #f="ngForm" class="container mt-4">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" name="email" value="test" ngModel required email class="form-control" placeholder="Titre de l'événement" #email="ngModel" />
+    <div *ngIf="email.invalid" class="text-danger">
+      <div *ngIf="email.hasError('required')">Email est requis.</div>
+      <div *ngIf="email.hasError('email')">Fomat Email invalid</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="nbp">Nombre de places</label>
+    <input ngModel #nbp="ngModel" id="nbp" name="nbp" type="number" required min="1" class="form-control" placeholder="Titre de l'événement" />
+  <div *ngIf="nbp.invalid && nbp.touched" class="text-danger">
+      <div *ngIf="nbp.hasError('required')">Nombre de place requis</div>
+      <div *ngIf="nbp.hasError('min')">Minimum 1</div>
+    </div>
+  </div>
+ <span *ngIf="nbp.valid">{{ price * nbp.value}}</span>
+  <button type="submit"  class="btn btn-primary mt-3" [disabled]="f.invalid">Soumettre</button>
+    </form>

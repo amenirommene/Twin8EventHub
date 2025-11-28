@@ -10,6 +10,7 @@ import { EventDetailComponent } from './pages/event-detail/event-detail.componen
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { ParticipationFormComponent } from './components/participation-form/participation-form.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AddEventComponent } from './components/add-event/add-event.component';
     EventDetailComponent,
     EventCardComponent,
     SearchBarComponent,
-    AddEventComponent
+    AddEventComponent,
+    ParticipationFormComponent
   ],
   imports: [
     CommonModule,
