@@ -32,6 +32,10 @@ export class ListEventComponent {
     },
     complete: ()=>console.log("terminé")
   });
+
+  this.es.getExpensivesEvents().subscribe(
+    res=> console.log(res)
+  )
   }
 
 
