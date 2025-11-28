@@ -8,6 +8,7 @@ import { EventsService } from '../../../../data-acess/services/events.service';
   selector: 'app-list-event',
   templateUrl: './list-event.component.html',
   styleUrl: './list-event.component.css',
+  //providers:[EventsService]
 })
 export class ListEventComponent {
   constructor(private es:EventsService){}
@@ -24,9 +25,10 @@ export class ListEventComponent {
 
   }
   ngOnInit(){
-   this.es.getAllEventsFromBackend().subscribe({
-    next : (res)=>this.list=res,
-    error: (e)=>{console.log(e),console.log("Message de mon erreur : " + e?.error?.message)
+   this.es.getAllEventsFromBackend()?.subscribe({
+    next : (res)=>this.list=res.body ?? [],
+    error: (e)=>{console.log(e.message),
+      console.log("Message de mon erreur : " + e?.error?.message)
     },
     complete: ()=>console.log("terminé")
   });

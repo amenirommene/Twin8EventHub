@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Eventy } from '../../models/event';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -19,10 +19,11 @@ getEventById(id:number): Eventy | undefined {
   return this.list.find(e=>e.id===id)  ;
 }
 
-getAllEventsFromBackend():Observable<Eventy[]>{
-      return this._http.get<Eventy[]>(this.apiEventsUrl);/*.pipe(
+getAllEventsFromBackend():Observable<HttpResponse<Eventy[]> > {
+      return this._http.get<Eventy[]>(this.apiEventsUrl, {observe:'response'}).
+      pipe(
         catchError((er:HttpErrorResponse)=>
           {return throwError(()=>er)}
-      ))*/
+      ))
 }
 }
