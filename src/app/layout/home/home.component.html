@@ -12,7 +12,16 @@
       </div>
   </div>
 </section>
+<section class="container py-5">
+  <div class="row g-4">
+      <div class="col-md-4" *ngFor="let event of list">
+          <div class="card h-100 shadow-sm">
+              <app-card [e]="event"></app-card>
+          </div>
+      </div>
 
+</div>
+</section>
 <!-- Section Features -->
 <section class="container py-5">
   <div class="row g-4">

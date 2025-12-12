@@ -10,6 +10,8 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { provideHttpClient } from '@angular/common/http';
+import { EventCardComponent } from './features/events/components/event-card/event-card.component';
+import { CardComponent } from './layout/card/card.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,13 @@ import { provideHttpClient } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+
   ],
   imports: [
     BrowserModule,//module externe depuis node_modules
     AppRoutingModule, //module interne qui sous trouve sous src/app
+   CardComponent
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
