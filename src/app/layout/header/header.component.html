@@ -1,6 +1,6 @@
 <!---<nav [class]="getClass()">--->
  <!--- <nav [class]="isAdmin ? cssAdmin : cssNotAdmin">--->
-     <nav>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <!-- Logo / Nom de l'application -->
     <a class="navbar-brand fw-bold" routerLink="/">EventHub</a>
@@ -26,9 +26,20 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/feedback" routerLinkActive="active">Feedback</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/auth/login" routerLinkActive="active">Se connecter</a>
-        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated">
+                    <a class="nav-link" routerLink="users/sign-in" routerLinkActive="active">Se connecter</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="isAuthenticated">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ currentUser?.firstName || currentUser?.email }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="#">{{ currentUser?.email }}</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" (click)="logout()" style="cursor: pointer;">Déconnexion</a></li>
+                    </ul>
+                </li>
+
 
       </ul>
     </div>

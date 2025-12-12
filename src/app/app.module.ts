@@ -9,9 +9,10 @@ import { HomeComponent } from './layout/home/home.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { EventCardComponent } from './features/events/components/event-card/event-card.component';
 import { CardComponent } from './layout/card/card.component';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { CardComponent } from './layout/card/card.component';
     AppRoutingModule, //module interne qui sous trouve sous src/app
    CardComponent
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(withInterceptors([authInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
