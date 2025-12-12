@@ -28,6 +28,35 @@ getAllEventsFromBackend():Observable<HttpResponse<Eventy[]> > {
       )
 }
 
+addEventToBackend(e:Eventy):Observable<Eventy> {
+      return this._http.post<Eventy>(this.apiEventsUrl,e).
+      pipe(
+         catchError((error:HttpErrorResponse)=>
+          this.serviceError.handleError(error))
+      )
+}
+updateEventInBackend(e:Eventy):Observable<Eventy> {
+      return this._http.put<Eventy>(this.apiEventsUrl+"/"+e.id,e).
+      pipe(
+         catchError((error:HttpErrorResponse)=>
+          this.serviceError.handleError(error))
+      )
+}
+deleteEventFromBackend(id:number):Observable<Eventy> {
+      return this._http.delete<Eventy>(this.apiEventsUrl+"/"+id).
+      pipe(
+         catchError((error:HttpErrorResponse)=>
+          this.serviceError.handleError(error))
+      )
+}
+
+getEventsByOrganizerFromBackend(organizer:number):Observable<Eventy[]>{
+return this._http.get<Eventy[]>(this.apiEventsUrl+"?organizerId="+organizer).
+      pipe(
+         catchError((error:HttpErrorResponse)=>
+          this.serviceError.handleError(error))
+      )
+}
 getExpensivesEvents():Observable<{ title: string; finalPrice: number }[]> {
       return this._http.get<Eventy[]>(this.apiEventsUrl).
       pipe(

@@ -1,0 +1,25 @@
+
+
+<!---<input [value]="prop1" [placeholder]="rechercher" />
+{{prop1}}--->
+<!---<button (click)="Like()">Like</button>--->
+<!---<input [(ngModel)]="propNgModel" >
+{{propNgModel}}--->
+<div class="container py-4">
+    <h2 class="mb-3">{{ title }} </h2> <button class="btn btn-primary"><a routerLink="add">Proposer un évènement</a></button> <!---interpolation---->
+
+    <!-- Recherche -->
+    <input type="text" class="form-control mb-4" [(ngModel)]="propNgModel"
+           [placeholder]="rechercher"> <!---propertybinding--->
+
+    <div class="row g-3">
+     <!---debut de la boucle for--->
+
+     <div class="col-md-4" *ngFor="let e of list |contains:propNgModel" >
+        <app-event-card [e]="e" (deleteClicked)="getNewList()"></app-event-card>
+        </div>  <!---enfor-->
+
+    </div>
+</div>
+
+

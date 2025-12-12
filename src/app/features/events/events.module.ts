@@ -11,6 +11,7 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { ParticipationFormComponent } from './components/participation-form/participation-form.component';
+import { MyEventsComponent } from './pages/my-events/my-events.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ParticipationFormComponent } from './components/participation-form/part
     EventCardComponent,
     SearchBarComponent,
     AddEventComponent,
-    ParticipationFormComponent
+    ParticipationFormComponent,
+    MyEventsComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { futurDateValidator } from '../../../../shared/validators/futur-date.validator';
+import { EventsService } from '../../../../data-acess/services/events.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-event',
@@ -9,7 +11,7 @@ import { futurDateValidator } from '../../../../shared/validators/futur-date.val
 })
 export class AddEventComponent {
   eventForm!:FormGroup;
-
+ constructor(private es:EventsService,private myRouter:Router){}
   ngOnInit(){
     this.eventForm = new FormGroup(
     {
@@ -32,12 +34,16 @@ export class AddEventComponent {
   }
   onSubmit(){
     console.log(this.eventForm.value);
+    this.es.addEventToBackend(this.eventForm.value).subscribe(
+      ()=> this.myRouter.navigateByUrl("/myevents")
+    );
+
   }
 
   get title(){
     return this.eventForm.get('title');
   }
-  
+
   get domaines(){
     return this.eventForm.get('domaines') as FormArray;
   }
